@@ -18,3 +18,12 @@ body {
 .pagination {
     margin-bottom: 0;
 }
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.form-control:focus {
+    border-color: #ced4da;
+    box-shadow: none;
+}

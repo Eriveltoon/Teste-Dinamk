@@ -2,26 +2,7 @@
 
 @section('content')
 
-{{-- NAVBAR --}}
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="#">
-            Teste Dinamk
-        </a>
-
-        <div class="ms-auto">
-
-            <form action="{{ route('logout') }}" method="POST">
-                @csrf
-
-                <button type="submit" class="btn btn-outline-light btn-md">
-                    <i class="bi bi-box-arrow-right"></i>
-                </button>
-            </form>
-
-        </div>
-    </div>
-</nav>
+@include('navbar.navbar')
 
 <div class="container py-5">
     {{-- HEADER --}}
@@ -79,7 +60,7 @@
                     Usuários
                 </h5>
 
-                <a href="#"
+                <a href="{{ route('users.create') }}"
                    class="btn btn-primary">
                     + Novo Usuário
                 </a>
@@ -87,6 +68,13 @@
         </div>
 
         <div class="card-body p-0">
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            @endif
+
             <div class="table-responsive">
                 <table class="table table-hover align-middle mb-0">
                     <thead class="table-light">

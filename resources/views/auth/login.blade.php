@@ -48,28 +48,38 @@
                                 E-mail
                             </label>
 
-                            <input
-                                type="email"
-                                class="form-control"
-                                id="email"
-                                name="email"
-                                placeholder="Digite seu e-mail"
-                                required
-                                autofocus>
+                            <div class="input-group">
+                                <input
+                                    type="email"
+                                    class="form-control"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Digite seu e-mail"
+                                    required
+                                    autofocus>
+
+                                <span class="input-group-text">
+                                    <i class="bi bi-envelope"></i>
+                                </span>
+                            </div>
                         </div>
 
-                        <div class="mb-4">
-                            <label for="password" class="form-label">
-                                Senha
-                            </label>
-
+                        <div class="input-group mb-4">
                             <input
                                 type="password"
                                 class="form-control"
                                 id="password"
                                 name="password"
                                 placeholder="Digite sua senha"
-                                required>
+                            >
+
+                            <button
+                                type="button"
+                                class="btn btn-outline-secondary toggle-password"
+                                data-target="password">
+
+                                <i class="bi bi-eye-slash"></i>
+                            </button>
                         </div>
 
                         <div class="d-grid">
