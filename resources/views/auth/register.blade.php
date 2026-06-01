@@ -29,7 +29,10 @@
                                 id="name"
                                 name="name"
                                 placeholder="Digite seu nome"
-                                required>
+                            >
+                            @error('name')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div class="mb-3">
@@ -43,7 +46,10 @@
                                 id="email"
                                 name="email"
                                 placeholder="Digite seu e-mail"
-                                required>
+                            >
+                            @error('email')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div class="mb-3">
@@ -57,7 +63,10 @@
                                 id="password"
                                 name="password"
                                 placeholder="Digite sua senha"
-                                required>
+                            >
+                            @error('password')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div class="mb-4">
@@ -71,7 +80,10 @@
                                 id="password_confirmation"
                                 name="password_confirmation"
                                 placeholder="Confirme sua senha"
-                                required>
+                            >
+                            @error('password_confirmation')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div class="d-grid">

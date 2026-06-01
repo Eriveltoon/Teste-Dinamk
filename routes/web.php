@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\User\UserIndexController;
 
 
 /*
@@ -23,7 +24,11 @@ Route::get('/', function () {
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 
+Route::get('/users', UserIndexController::class)
+    ->middleware(['auth']);
