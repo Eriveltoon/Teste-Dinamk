@@ -88,6 +88,11 @@
                     {{ session('success') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
+            @elseif (session('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
             @endif
 
             <div class="table-responsive">
@@ -127,13 +132,19 @@
                                         Editar
                                     </a>
 
-                                    <button
-                                        class="btn btn-sm btn-outline-danger"
-                                        disabled>
+                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline delete-form">
+                                        @csrf
+                                        @method('DELETE')
 
-                                        <i class="bi bi-trash"></i>
-                                        Excluir
-                                    </button>
+                                        <button type="submit"
+                                            class="btn btn-sm btn-outline-danger btn-delete"
+                                            {{-- onclick="return confirm('Tem certeza que deseja excluir este usuário?')" --}}
+                                        >
+
+                                            <i class="bi bi-trash"></i>
+                                            Excluir
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
 

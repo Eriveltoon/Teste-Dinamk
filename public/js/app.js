@@ -17,3 +17,24 @@ document.querySelectorAll(".toggle-password").forEach((button) => {
         }
     });
 });
+
+document.querySelectorAll(".delete-form").forEach((form) => {
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        Swal.fire({
+            title: "Tem certeza?",
+            text: "Esse usuário será excluído permanentemente!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#6c757d",
+            confirmButtonText: "Sim, excluir",
+            cancelButtonText: "Cancelar",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+    });
+});

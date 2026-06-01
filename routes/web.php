@@ -8,6 +8,7 @@ use App\Http\Controllers\User\UserCreateController;
 use App\Http\Controllers\User\UserStoreController;
 use App\Http\Controllers\User\UserEditController;
 use App\Http\Controllers\User\UserUpdateController;
+use App\Http\Controllers\User\UserDeleteController;
 
 
 /*
@@ -43,4 +44,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/users/{user}/edit', UserEditController::class)->middleware(['auth'])->name('users.edit');
 
     Route::put('/users/{user}', UserUpdateController::class)->middleware(['auth'])->name('users.update');
+
+    Route::delete('/users/{user}', UserDeleteController::class)->middleware(['auth'])->name('users.destroy');
 });
