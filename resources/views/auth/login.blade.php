@@ -84,6 +84,7 @@
 
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-box-arrow-right"></i>
                                 Entrar
                             </button>
                         </div>

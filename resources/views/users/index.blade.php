@@ -6,20 +6,35 @@
 
 <div class="container py-5">
     {{-- HEADER --}}
-    <div class="mb-5">
-        <h1 class="fw-bold mb-1">
-            Gerenciamento de Usuários
-        </h1>
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <div>
+            <h1 class="fw-bold mb-1">Gerenciamento de Usuários</h1>
+            <p class="text-muted mb-0">
+                Visualize e gerencie os usuários cadastrados no sistema.
+            </p>
+        </div>
 
-        <p class="text-muted mb-0">
-            Visualize e gerencie os usuários cadastrados no sistema.
-        </p>
+        <div class="d-flex align-items-center gap-2">
+            <div class="text-end">
+                <div class="fw-semibold">
+                    {{ ucwords(auth()->user()?->name) }}
+                </div>
+                <small class="text-muted">
+                    {{ auth()->user()?->email }}
+                </small>
+            </div>
+
+            <div class="rounded-circle bg-primary text-white d-flex justify-content-center align-items-center"
+                style="width: 40px; height: 40px;">
+                {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+            </div>
+        </div>
     </div>
 
     {{-- CARDS --}}
     <div class="row g-4 mb-2">
         <div class="col-md-6">
-            <div class="card border-0 shadow-sm h-100">
+            <div class="card border-0 shadow-lg h-100">
                 <div class="card-body p-4">
 
                     <h6 class="text-uppercase text-muted small mb-3">
@@ -34,14 +49,14 @@
         </div>
 
         <div class="col-md-6">
-            <div class="card border-0 shadow-sm h-100">
+            <div class="card border-0 shadow-lg h-100">
                 <div class="card-body p-4">
                     <h6 class="text-uppercase text-muted small mb-3">
                         Último usuário cadastrado
                     </h6>
 
                     <h4 class="fw-bold mb-1">
-                        {{ $latestUser->name ?? 'Nenhum usuário' }}
+                        {{ ucwords($latestUser->name ?? 'Nenhum usuário') }}
                     </h4>
 
                     <small class="text-muted">
@@ -53,7 +68,7 @@
     </div>
 
     {{-- TABELA --}}
-    <div class="card border-0 shadow-sm">
+    <div class="card border-0 shadow-lg">
         <div class="card-header bg-white border-0 p-4">
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="mb-0 fw-bold">
@@ -67,7 +82,7 @@
             </div>
         </div>
 
-        <div class="card-body p-0">
+        <div class="card-body p-3">
             @if (session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session('success') }}
@@ -96,7 +111,7 @@
                                 </td>
 
                                 <td>
-                                    {{ $user->name }}
+                                    {{ ucwords($user->name) }}
                                 </td>
 
                                 <td>
@@ -104,14 +119,13 @@
                                 </td>
 
                                 <td class="text-center">
-                                    <button
-                                        class="btn btn-sm btn-outline-warning"
-                                        disabled>
+                                    <a
+                                        href="{{ route('users.edit', $user->id) }}"
+                                        class="btn btn-sm btn-outline-warning">
 
                                         <i class="bi bi-pencil-square"></i>
                                         Editar
-
-                                    </button>
+                                    </a>
 
                                     <button
                                         class="btn btn-sm btn-outline-danger"
@@ -119,7 +133,6 @@
 
                                         <i class="bi bi-trash"></i>
                                         Excluir
-
                                     </button>
                                 </td>
                             </tr>
@@ -139,7 +152,7 @@
             </div>
         </div>
 
-        <div class="card-footer bg-white border-0 py-3">
+        <div class="card-footer bg-white border-0 py-3 shadow-lg">
             <div class="d-flex justify-content-center">
                 {{ $users->links() }}
             </div>

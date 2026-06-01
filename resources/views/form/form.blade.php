@@ -3,13 +3,19 @@
         Nome
     </label>
 
-    <input
-        type="text"
-        class="form-control"
-        id="name"
-        name="name"
-        placeholder="Digite seu nome"
-    >
+    <div class="input-group">
+        <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            value="{{ old('name', $user->name ?? '') }}"
+            placeholder="Digite seu nome"
+        >
+        <span class="input-group-text">
+            <i class="bi bi-person"></i>
+        </span>
+    </div>
     @error('name')
         <span class="text-danger">{{ $message }}</span>
     @enderror
@@ -26,6 +32,7 @@
             class="form-control"
             id="email"
             name="email"
+            value="{{ old('email', $user->email ?? '') }}"
             placeholder="Digite seu e-mail"
             required
             autofocus>
@@ -60,24 +67,16 @@
 
             <i class="bi bi-eye-slash"></i>
         </button>
+        @error('password')
+            <span class="text-danger">{{ $message }}</span>
+        @enderror
     </div>
-    @error('password')
-        <span class="text-danger">{{ $message }}</span>
-    @enderror
 </div>
 
-<div class="mb-4">
+{{-- <div class="mb-4">
     <label for="password_confirmation" class="form-label">
         Confirmar Senha
     </label>
-
-    {{-- <input
-        type="password"
-        class="form-control"
-        id="password_confirmation"
-        name="password_confirmation"
-        placeholder="Confirme sua senha"
-    > --}}
 
     <div class="input-group mb-4">
         <input
@@ -99,4 +98,4 @@
     @error('password_confirmation')
         <span class="text-danger">{{ $message }}</span>
     @enderror
-</div>
+</div> --}}
