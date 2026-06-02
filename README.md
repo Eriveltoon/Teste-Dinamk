@@ -1,16 +1,16 @@
 ### O projeto foi criado utilizando Laravel 10, pensando em uma arquitetura simples, porém organizada e escalável.
 
-    - Utilizei Controllers (Single Action Controllers) separando suas responsabilidades, deixando cada controller responsável por uma ação, facilitando uma possível manutenção.
+- Utilizei Controllers (Single Action Controllers) separando suas responsabilidades, deixando cada controller responsável por uma ação, facilitando uma possível manutenção.
 
-    - Seguindo essa idéia de desacoplamento de responsabilidade, utilizei Form Request independentes, garantindo maior organização e reutilização de regras de validação.
+- Seguindo essa idéia de desacoplamento de responsabilidade, utilizei Form Request independentes, garantindo maior organização e reutilização de regras de validação.
 
-    - Criação de Services para que a regra de negócio ficasse encapsulada.
+- Criação de Services para que a regra de negócio ficasse encapsulada.
 
-    - Toda interface da aplicação conta com a utilização do Bootstrap.
+- Toda interface da aplicação conta com a utilização do Bootstrap.
 
-    - O envio de e-mail de boas-vindas foi implementado utilizando o sistema de Mailables do Laravel. A responsabilidade de criação do usuário e disparo do e-mail foi centralizada no UserService, garantindo reutilização da lógica entre os fluxos de cadastro público e administrativo.
+- O envio de e-mail de boas-vindas foi implementado utilizando o sistema de Mailables do Laravel. A responsabilidade de criação do usuário e disparo do e-mail foi centralizada no UserService, garantindo reutilização da lógica entre os fluxos de cadastro público e administrativo.
 
-    - O disparo do e-mail ocorre após a criação de um usuário, tanto no fluxo público quanto no administrativo, evitando duplicação de código ao centralizar a regra em uma camada de serviço.
+- O disparo do e-mail ocorre após a criação de um usuário, tanto no fluxo público quanto no administrativo, evitando duplicação de código ao centralizar a regra em uma camada de serviço.
 
 ### Instruções para rodar o projeto localmente
 
@@ -18,12 +18,12 @@
 
 Antes de iniciar, certifique-se de ter instalado:
 
-    PHP 8.1+
-    Composer
-    MySQL
-    Node.js
-    Git
-    XAMPP
+- PHP 8.1+
+- Composer
+- MySQL
+- Node.js
+- Git
+- XAMPP
 
 ## Passo 1
 
