@@ -21,7 +21,6 @@ Antes de iniciar, certifique-se de ter instalado:
 - PHP 8.1+
 - Composer
 - MySQL
-- Node.js
 - Git
 - XAMPP
 
