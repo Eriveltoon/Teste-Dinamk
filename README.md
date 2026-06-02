@@ -44,7 +44,9 @@ Copie o arquivo .env.example e cole no mesmo diretório e renomeie para .env
 ## Passo 4
 
 Gerar chave da aplicação.
-No terminal bash e dentro da pasta do projeto, rode este comando (php artisan key:generate).
+No terminal bash e dentro da pasta do projeto, rode este comando
+
+- php artisan key:generate.
 
 ## Passo 5
 
@@ -54,35 +56,43 @@ Crie um banco no MySQL, utilizei o phpmyadmin do XAMPP (http://localhost/phpmyad
 
 No .env configurar esta parte com o DB_DATABASE, DB_USERNAME:
 OBS: Se tiver alguma senha no Banco que você criou, adicionar no campo (DB_PASSWORD)
-DB_DATABASE=teste_dinamk
-DB_USERNAME=root
-DB_PASSWORD=
+
+- DB_DATABASE=teste_dinamk
+- DB_USERNAME=root
+- DB_PASSWORD=
 
 ## Passo 6
 
 Rodar migration.
-No terminal bash, dentro da pasta do projeto, rodar este comando (php artisan migrate), para criar a tabela (users) já com os campos necessários.
+No terminal bash, dentro da pasta do projeto, rodar o comando, para criar a tabela (users) já com os campos necessários.
+
+- php artisan migrate
 
 ## Passo 7
 
 Configuração de e-mail (Mailtrap)
 Para testes e visualização dos e-mails enviados, pode ser utilizada uma conta no Mailtrap, responsável pela criação da inbox e obtenção das credenciais SMTP utilizadas no arquivo .env
 Após criar a conta e logar no Mailtrap, acessar o passo a passo a seguir.
+
 Sandboxes -> Projects -> Acessar config (SMTP) que terá os dados p/ configurar o .env:
-MAIL_MAILER=smtp
-MAIL_HOST=sandbox.smtp.mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=seu_usuario
-MAIL_PASSWORD=sua_senha
-MAIL_ENCRYPTION=null
-MAIL_FROM_ADDRESS="noreply@teste.com"
-MAIL_FROM_NAME="Sistema"
+
+- MAIL_MAILER=smtp
+- MAIL_HOST=sandbox.smtp.mailtrap.io
+- MAIL_PORT=2525
+- MAIL_USERNAME=seu_usuario
+- MAIL_PASSWORD=sua_senha
+- MAIL_ENCRYPTION=null
+- MAIL_FROM_ADDRESS="noreply@teste.com"
+- MAIL_FROM_NAME="Sistema"
 
 ## Passo 8
 
 Rodar o servidor local
 No terminal bash, dentro da pasta do projeto, rodar o comando (php artisan serve)
 A aplicação rodará neste link (http://127.0.0.1:8000), só copiar e colar no navegador, para que possa começar a usá-lo.
+
+- php artisan serve
+- http://127.0.0.1:8000
 
 ## Passo 9
 
