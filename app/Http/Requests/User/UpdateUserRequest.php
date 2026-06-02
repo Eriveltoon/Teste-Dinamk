@@ -25,7 +25,7 @@ class UpdateUserRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users', 'email')->ignore($this->route('user'))],
-            'password' => ['nullable', 'string', 'min:4'],
+            'password' => ['nullable', 'string', 'min:4', 'max:8'],
         ];
     }
 
@@ -36,6 +36,7 @@ class UpdateUserRequest extends FormRequest
             'email.required' => 'O e-mail é obrigatório.',
             'email.email' => 'Informe um e-mail válido.',
             'password.min' => 'A senha deve ter no mínimo 4 caracteres.',
+            'password.max' => 'A senha deve ter no máximo 8 caracteres.',
         ];
     }
 }

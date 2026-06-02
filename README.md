@@ -1,66 +1,92 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+### O projeto foi criado utilizando Laravel 10, pensando em uma arquitetura simples, porém organizada e escalável.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+    - Utilizei Controllers (Single Action Controllers) separando suas responsabilidades, deixando cada controller responsável por uma ação, facilitando uma possível manutenção.
 
-## About Laravel
+    - Seguindo essa idéia de desacoplamento de responsabilidade, utilizei Form Request independentes, garantindo maior organização e reutilização de regras de validação.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+    - Criação de Services para que a regra de negócio ficasse encapsulada.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+    - Toda interface da aplicação conta com a utilização do Bootstrap.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+    - O envio de e-mail de boas-vindas foi implementado utilizando o sistema de Mailables do Laravel. A responsabilidade de criação do usuário e disparo do e-mail foi centralizada no UserService, garantindo reutilização da lógica entre os fluxos de cadastro público e administrativo.
 
-## Learning Laravel
+    - O disparo do e-mail ocorre após a criação de um usuário, tanto no fluxo público quanto no administrativo, evitando duplicação de código ao centralizar a regra em uma camada de serviço.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Instruções para rodar o projeto localmente
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## - Requisitos
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Antes de iniciar, certifique-se de ter instalado:
 
-## Laravel Sponsors
+    PHP 8.1+
+    Composer
+    MySQL
+    Node.js
+    Git
+    XAMPP
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Passo 1
 
-### Premium Partners
+Clonar o repositório
+No terminal (bash) rodar este comando - git clone https://github.com/Eriveltoon/Teste-Dinamk.git
+Após clonar o projeto, ainda no terminal (bash) acessar a pasta do projeto (cd teste_dinamk)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Passo 2
 
-## Contributing
+Instalar dependências do PHP.
+Dentro da pasta do projeto, rodar o comando (composer install).
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Passo 3
 
-## Code of Conduct
+Configurar o arquivo .env
+Copie o arquivo .env.example e cole no mesmo diretório e renomeie para .env
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Passo 4
 
-## Security Vulnerabilities
+Gerar chave da aplicação.
+No terminal bash e dentro da pasta do projeto, rode este comando (php artisan key:generate).
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Passo 5
 
-## License
+Configurar banco de dados
+Abrir o XAMPP e startar os MODULE (Apache e MySQL)
+Crie um banco no MySQL, utilizei o phpmyadmin do XAMPP (http://localhost/phpmyadmin/), nome do Banco pode ser (teste_dinamk).
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+No .env configurar esta parte com o DB_DATABASE, DB_USERNAME:
+OBS: Se tiver alguma senha no Banco que você criou, adicionar no campo (DB_PASSWORD)
+DB_DATABASE=teste_dinamk
+DB_USERNAME=root
+DB_PASSWORD=
+
+## Passo 6
+
+Rodar migration.
+No terminal bash, dentro da pasta do projeto, rodar este comando (php artisan migrate), para criar a tabela (users) já com os campos necessários.
+
+## Passo 7
+
+Configuração de e-mail (Mailtrap)
+Para testes e visualização dos e-mails enviados, pode ser utilizada uma conta no Mailtrap, responsável pela criação da inbox e obtenção das credenciais SMTP utilizadas no arquivo .env
+Após criar a conta e logar no Mailtrap, acessar o passo a passo a seguir.
+Sandboxes -> Projects -> Acessar config (SMTP) que terá os dados p/ configurar o .env:
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=seu_usuario
+MAIL_PASSWORD=sua_senha
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="noreply@teste.com"
+MAIL_FROM_NAME="Sistema"
+
+## Passo 8
+
+Rodar o servidor local
+No terminal bash, dentro da pasta do projeto, rodar o comando (php artisan serve)
+A aplicação rodará neste link (http://127.0.0.1:8000), só copiar e colar no navegador, para que possa começar a usá-lo.
+
+## Passo 9
+
+Acesso ao sistema
+Crie um novo usuário para que possa fazer o login no sistema e ter acesso a todas funcionalidades.
+
+## O desenvolvimento deste projeto, foi pensado em boas práticas de arquitetura, isolando responsabilidades e adicionando envio de e-mail automatizado no processo de criação de usuários.

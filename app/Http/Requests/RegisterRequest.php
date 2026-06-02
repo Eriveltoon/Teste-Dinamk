@@ -24,7 +24,7 @@ class RegisterRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            'password' => ['required', 'string', 'min:4'],
+            'password' => ['required', 'string', 'min:4', 'max:8'],
         ];
     }
 
@@ -37,6 +37,7 @@ class RegisterRequest extends FormRequest
             'email.unique' => 'Este e-mail já está em uso.',
             'password.required' => 'A senha é obrigatória.',
             'password.min' => 'A senha deve ter no mínimo 4 caracteres.',
+            'password.max' => 'A senha deve ter no máximo 8 caracteres.',
         ];
     }
 }

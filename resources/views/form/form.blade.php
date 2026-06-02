@@ -71,30 +71,3 @@
         <span class="text-danger">{{ $message }}</span>
     @enderror
 </div>
-
-{{-- <div class="mb-4">
-    <label for="password_confirmation" class="form-label">
-        Confirmar Senha
-    </label>
-
-    <div class="input-group mb-4">
-        <input
-            type="password"
-            class="form-control"
-            id="password_confirmation"
-            name="password_confirmation"
-            placeholder="Digite sua senha"
-        >
-
-        <button
-            type="button"
-            class="btn btn-outline-secondary toggle-password"
-            data-target="password_confirmation">
-
-            <i class="bi bi-eye-slash"></i>
-        </button>
-    </div>
-    @error('password_confirmation')
-        <span class="text-danger">{{ $message }}</span>
-    @enderror
-</div> --}}
