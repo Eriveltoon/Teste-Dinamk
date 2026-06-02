@@ -6,9 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Services\UserService;
 
 class RegisterController extends Controller
 {
+    public function __construct(private UserService $userService)
+    {
+
+    }
+
     public function index()
     {
         return view('auth.register');
@@ -16,13 +22,7 @@ class RegisterController extends Controller
 
     public function store(RegisterRequest $request)
     {
-        $request->validated();
-
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        $this->userService->create($request->validated());
 
         return redirect()->route('login')->with('success', 'Conta criada com sucesso!');
     }
