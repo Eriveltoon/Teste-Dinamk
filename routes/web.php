@@ -35,15 +35,15 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/users', UserIndexController::class)->middleware(['auth'])->name('users.index');
+    Route::get('/users', UserIndexController::class)->name('users.index');
 
-    Route::get('/users/create', UserCreateController::class)->middleware(['auth'])->name('users.create');
+    Route::get('/users/create', UserCreateController::class)->name('users.create');
 
-    Route::post('/users', UserStoreController::class)->middleware(['auth'])->name('users.store');
+    Route::post('/users', UserStoreController::class)->name('users.store');
 
-    Route::get('/users/{user}/edit', UserEditController::class)->middleware(['auth'])->name('users.edit');
+    Route::get('/users/{user}/edit', UserEditController::class)->name('users.edit');
 
-    Route::put('/users/{user}', UserUpdateController::class)->middleware(['auth'])->name('users.update');
+    Route::put('/users/{user}', UserUpdateController::class)->name('users.update');
 
-    Route::delete('/users/{user}', UserDeleteController::class)->middleware(['auth'])->name('users.destroy');
+    Route::delete('/users/{user}', UserDeleteController::class)->name('users.destroy');
 });

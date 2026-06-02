@@ -5,20 +5,22 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use App\Services\UserService;
 
 class UserIndexController extends Controller
 {
+    public function __construct(private UserService $userService)
+    {
+
+    }
+
     /**
      * Handle the incoming request.
      */
     public function __invoke(Request $request)
     {
-        $users = User::latest()->paginate(2);
+        $data = $this->userService->getIndexData($request->all());
 
-        $totalUsers = User::count();
-
-        $latestUser = User::latest()->first();
-
-        return view('users.index', compact('users', 'totalUsers', 'latestUser'));
+        return view('users.index', $data);
     }
 }

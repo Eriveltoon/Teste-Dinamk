@@ -9,7 +9,7 @@
     <div class="d-flex justify-content-between align-items-center mb-5">
         <div>
             <h1 class="fw-bold mb-1">Gerenciamento de Usuários</h1>
-            <p class="text-muted mb-0">
+            <p class="text-muted mb-0 paragrafo-titulo">
                 Visualize e gerencie os usuários cadastrados no sistema.
             </p>
         </div>
@@ -68,7 +68,7 @@
     </div>
 
     {{-- TABELA --}}
-    <div class="card border-0 shadow-lg">
+    <div class="card border-0 shadow-lg mt-2">
         <div class="card-header bg-white border-0 p-4">
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="mb-0 fw-bold">
@@ -81,6 +81,31 @@
                 </a>
             </div>
         </div>
+
+        <form method="GET" action="{{ route('users.index') }}" class="mt-1 mb-1 px-4">
+            <div class="d-flex gap-2">
+                <div class="input-group">
+                    <input
+                        type="text"
+                        name="search"
+                        value="{{ request('search') }}"
+                        class="form-control"
+                        placeholder="Buscar por nome ou email"
+                    >
+
+                    <button class="btn btn-outline-primary">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+
+                @if(request('search'))
+                    <a href="{{ route('users.index') }}"
+                       class="btn btn-outline-danger">
+                        <i class="bi bi-x-circle"></i>
+                    </a>
+                @endif
+            </div>
+        </form>
 
         <div class="card-body p-3">
             @if (session('success'))
@@ -123,13 +148,12 @@
                                     {{ $user->email }}
                                 </td>
 
-                                <td class="text-center">
+                                <td class="text-center botoes">
                                     <a
                                         href="{{ route('users.edit', $user->id) }}"
                                         class="btn btn-sm btn-outline-warning">
 
                                         <i class="bi bi-pencil-square"></i>
-                                        Editar
                                     </a>
 
                                     <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline delete-form">
@@ -138,11 +162,8 @@
 
                                         <button type="submit"
                                             class="btn btn-sm btn-outline-danger btn-delete"
-                                            {{-- onclick="return confirm('Tem certeza que deseja excluir este usuário?')" --}}
                                         >
-
                                             <i class="bi bi-trash"></i>
-                                            Excluir
                                         </button>
                                     </form>
                                 </td>

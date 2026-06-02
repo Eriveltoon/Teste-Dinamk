@@ -7,21 +7,21 @@ use App\Http\Requests\RegisterRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Services\UserService;
 
 class UserStoreController extends Controller
 {
+    public function __construct(private UserService $userService)
+    {
+
+    }
+
     /**
      * Handle the incoming request.
      */
     public function __invoke(RegisterRequest $request)
     {
-        $request->validated();
-
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        $this->userService->create($request->validated());
 
         return redirect()->route('users.index')->with('success', 'Usuário cadastrado com sucesso!');
     }
