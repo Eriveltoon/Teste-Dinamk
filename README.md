@@ -27,8 +27,14 @@ Antes de iniciar, certifique-se de ter instalado:
 ## Passo 1
 
 Clonar o repositório
-No terminal (bash) rodar este comando - git clone https://github.com/Eriveltoon/Teste-Dinamk.git
-Após clonar o projeto, ainda no terminal (bash) acessar a pasta do projeto (cd teste_dinamk)
+
+No terminal (bash), executar:
+
+- git clone https://github.com/Eriveltoon/Teste-Dinamk.git
+
+Após clonar o projeto, acessar a pasta criada pelo Git:
+
+- cd Teste-Dinamk
 
 ## Passo 2
 
@@ -86,6 +92,31 @@ Sandboxes -> Projects -> Acessar config (SMTP) que terá os dados p/ configurar 
 
 ## Passo 8
 
+Configuração dos testes automatizados (Opcional)
+
+Para executar os testes automatizados, crie um arquivo `.env.testing` na raiz do projeto com uma configuração de banco de dados separada da utilizada pela aplicação.
+
+Exemplo:
+
+- DB_CONNECTION=mysql
+- DB_HOST=127.0.0.1
+- DB_PORT=3306
+- DB_DATABASE=auto_testing
+- DB_USERNAME=root
+- DB_PASSWORD=
+
+Crie previamente o banco de dados, seguindo a mesma orientação do (Passo 5) informado em `DB_DATABASE` exemplo sugerido do Banco (auto_testing).
+
+Para executar um teste específico:
+
+- php artisan test --filter=RegisterTest (Valida o cadastro público de usuários)
+- php artisan test --filter=LoginTest (Valida a autenticação e o acesso ao sistema)
+- php artisan test --filter=UserStoreTest (Valida o cadastro de usuários por um usuário autenticado)
+
+Atualmente o projeto possui testes automatizados de Feature para validação dos fluxos de cadastro público, autenticação e cadastro de usuários por usuários autenticados.
+
+## Passo 9
+
 Rodar o servidor local
 No terminal bash, dentro da pasta do projeto, rodar o comando (php artisan serve)
 A aplicação rodará neste link (http://127.0.0.1:8000), só copiar e colar no navegador, para que possa começar a usá-lo.
@@ -93,7 +124,7 @@ A aplicação rodará neste link (http://127.0.0.1:8000), só copiar e colar no 
 - php artisan serve
 - http://127.0.0.1:8000
 
-## Passo 9
+## Passo 10
 
 Acesso ao sistema
 Crie um novo usuário para que possa fazer o login no sistema e ter acesso a todas funcionalidades.

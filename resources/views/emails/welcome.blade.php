@@ -9,7 +9,7 @@
     <div style="max-width: 600px; margin: 0 auto; background: #ffffff; padding: 20px; border-radius: 8px;">
 
         <h2 style="color: #333;">
-            Bem-vindo, {{ $user->name }} 👋
+            Bem-vindo, {{ ucwords($user->name) }}.
         </h2>
 
         <p style="font-size: 14px; color: #555;">
